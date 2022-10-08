@@ -16,3 +16,8 @@ services:
     networks:
       my_net:
         ipv4_address: 172.0.0.2
+    volumes:
+      - type: bind
+        source: ${CONF_PATH}/mysql
+        target: "/etc/mysql/conf.d"
+        read_only: true
