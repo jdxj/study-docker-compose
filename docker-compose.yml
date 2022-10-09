@@ -33,3 +33,9 @@ services:
         source: $REDIS_CONF_PATH
         target: /usr/local/etc/redis
         read_only: true
+  my_rabbitmq:
+    image: rabbitmq:3-management
+    restart: unless-stopped
+    networks:
+      my_net:
+        ipv4_address: 172.0.0.4
