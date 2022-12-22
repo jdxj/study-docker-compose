@@ -28,6 +28,8 @@ services:
     networks:
       my_net:
         ipv4_address: 172.0.0.3
+    ports:
+      - "6379:6379"
     volumes:
       - type: bind
         source: $REDIS_CONF_PATH
