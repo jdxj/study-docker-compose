@@ -5,7 +5,7 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.0.0.0/24
+        - subnet: 172.18.0.0/16
 
 services:
   my_mysql:
@@ -15,7 +15,7 @@ services:
     restart: unless-stopped
     networks:
       my_net:
-        ipv4_address: 172.0.0.2
+        ipv4_address: 172.18.0.2
     volumes:
       - type: bind
         source: $MYSQL_CONF_PATH
@@ -27,9 +27,7 @@ services:
     restart: unless-stopped
     networks:
       my_net:
-        ipv4_address: 172.0.0.3
-    ports:
-      - "6379:6379"
+        ipv4_address: 172.18.0.3
     volumes:
       - type: bind
         source: $REDIS_CONF_PATH
@@ -40,4 +38,4 @@ services:
     restart: unless-stopped
     networks:
       my_net:
-        ipv4_address: 172.0.0.4
+        ipv4_address: 172.18.0.4
