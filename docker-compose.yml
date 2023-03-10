@@ -39,3 +39,16 @@ services:
     networks:
       my_net:
         ipv4_address: 172.18.0.4
+  my_postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASS
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "$POSTGRES_USER"]
+      interval: 10s
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      my_net:
+        ipv4_address: 172.18.0.5
